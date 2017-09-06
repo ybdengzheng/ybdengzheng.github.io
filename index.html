@@ -407,7 +407,7 @@ secrets file = /etc/rsync.passwd
 tcp        0      0 0.0.0.0:873             0.0.0.0:*               LISTEN      2643/rsync          
 tcp6       0      0 :::873                  :::*                    LISTEN      2643/rsync 
 </code></pre><p>至此备份服务端的配置已完成,接下来配置源服务器.</p>
-<h2 id="源服务器的配置"><a href="#源服务器的配置" class="headerlink" title="源服务器的配置"></a>源服务器的配置</h2><h3 id="配置rsync密码"><a href="#配置rsync密码" class="headerlink" title="配置rsync密码"></a>配置rsync密码</h3><pre><code> [root@centos ~]#echo &quot;pwd123456&quot; &gt; /ect/rsync.passwd
+<h2 id="源服务器的配置"><a href="#源服务器的配置" class="headerlink" title="源服务器的配置"></a>源服务器的配置</h2><h3 id="配置rsync密码"><a href="#配置rsync密码" class="headerlink" title="配置rsync密码"></a>配置rsync密码</h3><pre><code>[root@centos ~]#echo &quot;pwd123456&quot; &gt; /ect/rsync.passwd
 [root@centos ~]# chmod 600 /etc/rsync.passwd
 </code></pre><p>这个密码与备份端配置的密码一致.</p>
 <h3 id="安装inotity"><a href="#安装inotity" class="headerlink" title="安装inotity"></a>安装inotity</h3><p>Inotity作为Linux的核心子系统之一无需单独下载,我们只需要确认一下是否安装和启用即可.但是需要下载一个工具来更方便的操作他,这里我选用的是<a href="https://github.com/rvoicilas/inotify-tools/wiki" target="_blank" rel="external">inotity-tools</a>,下载以后编译安装即可.</p>
