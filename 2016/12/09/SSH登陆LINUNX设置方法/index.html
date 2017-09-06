@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Liunx," />
+  <meta name="keywords" content="Linux," />
 
 
 
@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="SSH安全功能性和安全性都强于Telnet，合理配置SSH可以更方便管理Linux服务器。 SSH服务配置文件位于/etc/ssh/sshd_config，修改以后需要重新启动SSH服务。 按以下修改配置文件  /etc/ssh/sshd_config123456789port XXXXPermitEmptyPasswords noHostbasedAuthentication noClientA">
-<meta name="keywords" content="Liunx">
+<meta name="description" content="SSH安全功能性和安全性都强于Telnet，合理配置SSH可以更方便管理Linux服务器。 SSH服务配置文件位于/etc/ssh/sshd_config，修改以后需要重新启动SSH服务。 按以下修改配置文件 ** /etc/ssh/sshd_config**123456789port XXXXPermitEmptyPasswords noHostbasedAuthentication noCli">
+<meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SSH登陆LINUNX设置方法">
 <meta property="og:url" content="http://ybdengzheng.github.io/2016/12/09/SSH登陆LINUNX设置方法/index.html">
 <meta property="og:site_name" content="把时间当朋友">
-<meta property="og:description" content="SSH安全功能性和安全性都强于Telnet，合理配置SSH可以更方便管理Linux服务器。 SSH服务配置文件位于/etc/ssh/sshd_config，修改以后需要重新启动SSH服务。 按以下修改配置文件  /etc/ssh/sshd_config123456789port XXXXPermitEmptyPasswords noHostbasedAuthentication noClientA">
-<meta property="og:updated_time" content="2016-12-18T22:49:51.000Z">
+<meta property="og:description" content="SSH安全功能性和安全性都强于Telnet，合理配置SSH可以更方便管理Linux服务器。 SSH服务配置文件位于/etc/ssh/sshd_config，修改以后需要重新启动SSH服务。 按以下修改配置文件 ** /etc/ssh/sshd_config**123456789port XXXXPermitEmptyPasswords noHostbasedAuthentication noCli">
+<meta property="og:updated_time" content="2017-09-06T03:09:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSH登陆LINUNX设置方法">
-<meta name="twitter:description" content="SSH安全功能性和安全性都强于Telnet，合理配置SSH可以更方便管理Linux服务器。 SSH服务配置文件位于/etc/ssh/sshd_config，修改以后需要重新启动SSH服务。 按以下修改配置文件  /etc/ssh/sshd_config123456789port XXXXPermitEmptyPasswords noHostbasedAuthentication noClientA">
+<meta name="twitter:description" content="SSH安全功能性和安全性都强于Telnet，合理配置SSH可以更方便管理Linux服务器。 SSH服务配置文件位于/etc/ssh/sshd_config，修改以后需要重新启动SSH服务。 按以下修改配置文件 ** /etc/ssh/sshd_config**123456789port XXXXPermitEmptyPasswords noHostbasedAuthentication noCli">
 
 
 
@@ -353,7 +353,7 @@
 
       
         <p>SSH安全功能性和安全性都强于Telnet，合理配置SSH可以更方便管理Linux服务器。 SSH服务配置文件位于/etc/ssh/sshd_config，修改以后需要重新启动SSH服务。</p>
-<h2 id="按以下修改配置文件-etc-ssh-sshd-config"><a href="#按以下修改配置文件-etc-ssh-sshd-config" class="headerlink" title="按以下修改配置文件  /etc/ssh/sshd_config"></a>按以下修改配置文件 <strong> /etc/ssh/sshd_config</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">port XXXX</div><div class="line">PermitEmptyPasswords no</div><div class="line">HostbasedAuthentication no</div><div class="line">ClientAliveInterval 600</div><div class="line">ClientAliveCountMax 3</div><div class="line">PasswordAuthentication no</div><div class="line">RSAAuthentication yes  </div><div class="line">PubkeyAuthentication yes  </div><div class="line">AuthorizedKeysFile     .ssh/authorized_keys</div></pre></td></tr></table></figure>
+<h2 id="按以下修改配置文件-etc-ssh-sshd-config"><a href="#按以下修改配置文件-etc-ssh-sshd-config" class="headerlink" title="按以下修改配置文件 ** /etc/ssh/sshd_config**"></a>按以下修改配置文件 ** /etc/ssh/sshd_config**</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">port XXXX</div><div class="line">PermitEmptyPasswords no</div><div class="line">HostbasedAuthentication no</div><div class="line">ClientAliveInterval 600</div><div class="line">ClientAliveCountMax 3</div><div class="line">PasswordAuthentication no</div><div class="line">RSAAuthentication yes  </div><div class="line">PubkeyAuthentication yes  </div><div class="line">AuthorizedKeysFile     .ssh/authorized_keys</div></pre></td></tr></table></figure>
 <h2 id="创建并上传证书"><a href="#创建并上传证书" class="headerlink" title="创建并上传证书"></a>创建并上传证书</h2><p>使用SSH公钥认证登陆，可以不用输入密码通过证书认证安全性更高。在客户端电脑生成证书：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dengMacBook:.ssh ybdengzheng$ ssh-keygen -t rsa -b 4096</div></pre></td></tr></table></figure></p>
 <p> 将公钥拷贝到服务器对应的.ssh下，命名为authorized_keys<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dengMacBook:.ssh ybdengzheng$ scp -P 29076 ~/.ssh/id_rsa.pub username@xxx.xxx.xxx.xxx:/username/.ssh/authorized_keys</div></pre></td></tr></table></figure></p>
 <p>如果已经存在证书，需要上传以后在服务器端追加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">dengMacBook:.ssh ybdengzheng$ scp -P 29076 ~/.ssh/id_rsa.pub root@23.83.238.185:/root/.ssh/id_rsa.pub</div><div class="line"></div><div class="line"># 以下到服务器执行</div><div class="line">cat /root/.ssh/id_rsa.pub &gt;&gt; /root/.ssh/authorized_keys</div></pre></td></tr></table></figure></p>
@@ -389,7 +389,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Liunx/" rel="tag"># Liunx</a>
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
           
         </div>
       
@@ -489,7 +489,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -502,7 +502,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -566,7 +566,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#按以下修改配置文件-etc-ssh-sshd-config"><span class="nav-number">1.</span> <span class="nav-text">按以下修改配置文件  /etc/ssh/sshd_config</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建并上传证书"><span class="nav-number">2.</span> <span class="nav-text">创建并上传证书</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#错误信息"><span class="nav-number">3.</span> <span class="nav-text">错误信息</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#按以下修改配置文件-etc-ssh-sshd-config"><span class="nav-number">1.</span> <span class="nav-text">按以下修改配置文件 ** /etc/ssh/sshd_config**</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建并上传证书"><span class="nav-number">2.</span> <span class="nav-text">创建并上传证书</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#错误信息"><span class="nav-number">3.</span> <span class="nav-text">错误信息</span></a></li></ol></div>
             
 
           </div>

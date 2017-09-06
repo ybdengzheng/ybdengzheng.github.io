@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="mac,php," />
+  <meta name="keywords" content="Linux,备份,server,rsync,inotify," />
 
 
 
@@ -87,19 +87,17 @@
 
 
 
-<meta name="description" content="中途有个项目是用 PHP 连接 MSSQL 数据库的,但是在 MACOS 上使用 MAMP 环境默认没有支持 MSSQL. 为了顺利使用,只好自己编译一个MSSQL扩展. 安装之前的啰嗦MACOS 自己带了 APACHE和 PHP, 所以这里一定要注意为了不出现一些奇怪的错误尽量使 MAMP 的PHP 版本与系统版本一致.1$ php -v 安装FreeTdsFreeTds 是一个在 Linux和">
-<meta name="keywords" content="mac,php">
+<meta name="description" content="目的需要将MySQL数据库和一些重要的项目文件备份到异地服务.考虑多种方案决定采用rsync+inotify的方式.inotify可以细粒监控文件的变化,并实时将数据文件备份到目标服务器. 软件版本 Centos7 3.10 rsync 3.09 inotity 3.14  备份主机配置确认rsync是否安装[root@centos ~]# rpm -q rsync rsync-3.0.9-17.">
+<meta name="keywords" content="Linux,备份,server,rsync,inotify">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MAMP安装MSSQL扩展">
-<meta property="og:url" content="http://ybdengzheng.github.io/2017/03/20/MAMP安装MSSQL扩展/index.html">
+<meta property="og:title" content="Centos7配置rsync+inotify备份">
+<meta property="og:url" content="http://ybdengzheng.github.io/2017/09/06/Centos7配置rsync-inotify备份/index.html">
 <meta property="og:site_name" content="把时间当朋友">
-<meta property="og:description" content="中途有个项目是用 PHP 连接 MSSQL 数据库的,但是在 MACOS 上使用 MAMP 环境默认没有支持 MSSQL. 为了顺利使用,只好自己编译一个MSSQL扩展. 安装之前的啰嗦MACOS 自己带了 APACHE和 PHP, 所以这里一定要注意为了不出现一些奇怪的错误尽量使 MAMP 的PHP 版本与系统版本一致.1$ php -v 安装FreeTdsFreeTds 是一个在 Linux和">
-<meta property="og:image" content="http://p1.bqimg.com/519918/5315a9170afd0c37.png">
-<meta property="og:updated_time" content="2017-03-20T12:39:14.000Z">
+<meta property="og:description" content="目的需要将MySQL数据库和一些重要的项目文件备份到异地服务.考虑多种方案决定采用rsync+inotify的方式.inotify可以细粒监控文件的变化,并实时将数据文件备份到目标服务器. 软件版本 Centos7 3.10 rsync 3.09 inotity 3.14  备份主机配置确认rsync是否安装[root@centos ~]# rpm -q rsync rsync-3.0.9-17.">
+<meta property="og:updated_time" content="2017-09-06T06:10:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MAMP安装MSSQL扩展">
-<meta name="twitter:description" content="中途有个项目是用 PHP 连接 MSSQL 数据库的,但是在 MACOS 上使用 MAMP 环境默认没有支持 MSSQL. 为了顺利使用,只好自己编译一个MSSQL扩展. 安装之前的啰嗦MACOS 自己带了 APACHE和 PHP, 所以这里一定要注意为了不出现一些奇怪的错误尽量使 MAMP 的PHP 版本与系统版本一致.1$ php -v 安装FreeTdsFreeTds 是一个在 Linux和">
-<meta name="twitter:image" content="http://p1.bqimg.com/519918/5315a9170afd0c37.png">
+<meta name="twitter:title" content="Centos7配置rsync+inotify备份">
+<meta name="twitter:description" content="目的需要将MySQL数据库和一些重要的项目文件备份到异地服务.考虑多种方案决定采用rsync+inotify的方式.inotify可以细粒监控文件的变化,并实时将数据文件备份到目标服务器. 软件版本 Centos7 3.10 rsync 3.09 inotity 3.14  备份主机配置确认rsync是否安装[root@centos ~]# rpm -q rsync rsync-3.0.9-17.">
 
 
 
@@ -127,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://ybdengzheng.github.io/2017/03/20/MAMP安装MSSQL扩展/"/>
+  <link rel="canonical" href="http://ybdengzheng.github.io/2017/09/06/Centos7配置rsync-inotify备份/"/>
 
 
 
 
 
-  <title> MAMP安装MSSQL扩展 | 把时间当朋友 </title>
+  <title> Centos7配置rsync+inotify备份 | 把时间当朋友 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -271,7 +269,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://ybdengzheng.github.io/2017/03/20/MAMP安装MSSQL扩展/">
+    <link itemprop="mainEntityOfPage" href="http://ybdengzheng.github.io/2017/09/06/Centos7配置rsync-inotify备份/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ybdengzheng">
@@ -292,7 +290,7 @@
             
             
               
-                MAMP安装MSSQL扩展
+                Centos7配置rsync+inotify备份
               
             
           </h1>
@@ -307,8 +305,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-20T19:00:42+08:00">
-                2017-03-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-06T10:00:47+08:00">
+                2017-09-06
               </time>
             
 
@@ -326,9 +324,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/20/MAMP安装MSSQL扩展/#comments" itemprop="discussionUrl">
+                <a href="/2017/09/06/Centos7配置rsync-inotify备份/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/03/20/MAMP安装MSSQL扩展/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/09/06/Centos7配置rsync-inotify备份/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -354,14 +352,99 @@
       
 
       
-        <p>中途有个项目是用 PHP 连接 MSSQL 数据库的,但是在 MACOS 上使用 MAMP 环境默认没有支持 MSSQL. 为了顺利使用,只好自己编译一个MSSQL扩展.</p>
-<h1 id="安装之前的啰嗦"><a href="#安装之前的啰嗦" class="headerlink" title="安装之前的啰嗦"></a>安装之前的啰嗦</h1><p>MACOS 自己带了 APACHE和 PHP, 所以这里一定要注意为了不出现一些奇怪的错误尽量使 MAMP 的PHP 版本与系统版本一致.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ php -v</div></pre></td></tr></table></figure></p>
-<h1 id="安装FreeTds"><a href="#安装FreeTds" class="headerlink" title="安装FreeTds"></a>安装FreeTds</h1><p>FreeTds 是一个在 Linux和 Unix 上连接 MS SQL Server 的开源软件.首先从官网<a href="ftp://ftp.freetds.org/pub/freetds/stable/freetds-patched.tar.gz" target="_blank" rel="external">下载</a>一个最新版本.解压后进入终端进行编译安装,参考以下命令.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo ./configure --prefix=/private/etc/freetds --with-tdsver=7.4 --sysconfdir=/private/etc/freetds/conf --enable-msdblib</div><div class="line">$ sudo make</div><div class="line">$ sudo make install</div></pre></td></tr></table></figure></p>
-<p>这样就安装完成了,可以<code>$/private/etc/freetds/bin/tsql -C</code>查看安装情况.</p>
-<h1 id="编译-PHP-mssql-扩展"><a href="#编译-PHP-mssql-扩展" class="headerlink" title="编译 PHP mssql 扩展"></a>编译 PHP mssql 扩展</h1><p>从PHP 官方网站现在对应版本的源码.进入终端按照下面步骤编译<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ ./configure --with-php-config=/usr/bin/php-config</div><div class="line">$ make</div><div class="line">$ cd ext/mssql/</div><div class="line">$ /usr/bin/phpize /*这里默认调用的 phpize 是 mac 系统自带 PHP 的.*/</div><div class="line">$ ./configure --with-php-config=/usr/bin/php-config --with-mssql=/private/etc/freetds</div><div class="line">$ make</div></pre></td></tr></table></figure></p>
-<p>这时候在<code>/ext/mssql/modules</code>里面已经有一个编译好的文件<em>mssql.so</em>.</p>
-<p>#将编译好的文件拷贝到 MAMP 的 PHP 扩展安装文件夹里面即可.<br><img src="http://p1.bqimg.com/519918/5315a9170afd0c37.png" alt=""><br>按照上图打开 php 的配置文件.查找<code>extension_dir=&quot;XXX/XXX&quot;</code>,将编译好的<code>mssql.so</code>拷贝到该文件夹里.然后在<code>php.ini</code>文件夹里面添加改扩展<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">extension=mssql.so</div></pre></td></tr></table></figure></p>
-<p>保存以后,重启MAMP 并运行 PHPinfo(),即可看见 mssql 模块已经加载成功.测试一下,连接成功~!<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$con = mssql_connect(&apos;MYSQLSERVER&apos;, &apos;username&apos;, &apos;password&apos;)</div><div class="line">or die(&apos;could not connect to server.&quot;);</div></pre></td></tr></table></figure></p>
+        <h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>需要将MySQL数据库和一些重要的项目文件备份到异地服务.考虑多种方案决定采用<a href="https://zh.wikipedia.org/wiki/Rsync" title="rsync" target="_blank" rel="external">rsync</a>+<a href="https://zh.wikipedia.org/wiki/Inotify" title="inotify" target="_blank" rel="external">inotify</a>的方式.inotify可以细粒监控文件的变化,并实时将数据文件备份到目标服务器.</p>
+<h2 id="软件版本"><a href="#软件版本" class="headerlink" title="软件版本"></a>软件版本</h2><ul>
+<li>Centos7 3.10</li>
+<li>rsync 3.09</li>
+<li>inotity 3.14</li>
+</ul>
+<h2 id="备份主机配置"><a href="#备份主机配置" class="headerlink" title="备份主机配置"></a>备份主机配置</h2><h3 id="确认rsync是否安装"><a href="#确认rsync是否安装" class="headerlink" title="确认rsync是否安装"></a>确认rsync是否安装</h3><pre><code>[root@centos ~]# rpm -q rsync
+rsync-3.0.9-17.el7.x86_64
+</code></pre><h3 id="创建rsync配置文件"><a href="#创建rsync配置文件" class="headerlink" title="创建rsync配置文件"></a>创建rsync配置文件</h3><pre><code>[root@centos ~]# vi /etc/rsyncd.conf
+# /etc/rsyncd: configuration file for rsync daemon mode
+
+# See rsyncd.conf man page for more options.
+
+# configuration example:
+
+ uid = root
+ gid = root
+ use chroot = no
+ max connections = 10
+ pid file = /var/run/rsyncd.pid
+ log file = /var/log/rsyncd.log
+ lock file = /var/run/rsyncd.lock
+# exclude = lost+found/
+# transfer logging = yes
+# timeout = 900
+# ignore nonreadable = yes
+# dont compress   = *.gz *.tgz *.zip *.z *.Z *.rpm *.deb *.bz2
+# 备份模块配置
+[backup] 
+# 备份路径
+path = /home/backup
+# 最大连接数
+max connections = 5
+ignore errors
+read only = true
+write only = true
+# 白名单,此处为源服务器地址
+hosts allow = 192.168.1.1
+list = false
+# rsync连接用户名,此处为虚拟用户名
+auth users = backuser
+# 密码存放的文件
+secrets file = /etc/rsync.passwd
+</code></pre><h3 id="配置用户名密码文件"><a href="#配置用户名密码文件" class="headerlink" title="配置用户名密码文件"></a>配置用户名密码文件</h3><pre><code>[root@centos ~]#echo &quot;backuser:pwd123456&quot; &gt; /ect/rsync.passwd
+[root@centos ~]# chmod 600 /etc/rsync.passwd
+</code></pre><h3 id="启动rsync服务"><a href="#启动rsync服务" class="headerlink" title="启动rsync服务"></a>启动rsync服务</h3><pre><code>[root@centos ~]#rsync --daemon
+[root@centos ~]#netstat -anpt |grep rsync
+tcp        0      0 0.0.0.0:873             0.0.0.0:*               LISTEN      2643/rsync          
+tcp6       0      0 :::873                  :::*                    LISTEN      2643/rsync 
+</code></pre><p>至此备份服务端的配置已完成,接下来配置源服务器.</p>
+<h2 id="源服务器的配置"><a href="#源服务器的配置" class="headerlink" title="源服务器的配置"></a>源服务器的配置</h2><h3 id="配置rsync密码"><a href="#配置rsync密码" class="headerlink" title="配置rsync密码"></a>配置rsync密码</h3><pre><code> [root@centos ~]#echo &quot;pwd123456&quot; &gt; /ect/rsync.passwd
+[root@centos ~]# chmod 600 /etc/rsync.passwd
+</code></pre><p>这个密码与备份端配置的密码一致.</p>
+<h3 id="安装inotity"><a href="#安装inotity" class="headerlink" title="安装inotity"></a>安装inotity</h3><p>Inotity作为Linux的核心子系统之一无需单独下载,我们只需要确认一下是否安装和启用即可.但是需要下载一个工具来更方便的操作他,这里我选用的是<a href="https://github.com/rvoicilas/inotify-tools/wiki" target="_blank" rel="external">inotity-tools</a>,下载以后编译安装即可.</p>
+<pre><code>[root@centos ~]#ls -lsart /proc/sys/fs/inotify
+总用量 0
+0 dr-xr-xr-x 1 root root 0 9月   4 15:54 ..
+0 -rw-r--r-- 1 root root 0 9月   6 13:58 max_user_watches
+0 -rw-r--r-- 1 root root 0 9月   6 13:58 max_user_instances
+0 -rw-r--r-- 1 root root 0 9月   6 13:58 max_queued_events
+0 dr-xr-xr-x 1 root root 0 9月   6 13:58 .
+</code></pre><p>出现上面的结果表示你的系统支持inotify,内核版本2.6.13及以后的版本是默认集成的.</p>
+<pre><code>[root@centos ~]#tar zxf inotify-tools-3.14.tar.gz
+[root@centos ~]#cd inotify-tools-3.14
+[root@centos inotify-tools-3.14]#./configure --preifx=/usr/local/inotify
+[root@centos inotify-tools-3.14]make &amp;&amp; make install
+</code></pre><h3 id="创建rsycn-inotify-sh脚本"><a href="#创建rsycn-inotify-sh脚本" class="headerlink" title="创建rsycn_inotify.sh脚本"></a>创建rsycn_inotify.sh脚本</h3><p>这个脚本可以监控多个文件并进行备份,参考了<a href="http://charlie928.blog.51cto.com/3741218/1651187/" target="_blank" rel="external">charlie_cen</a>的这篇博客.</p>
+<pre><code>#! /bin/bash
+sync1=&quot;/home/data/mysql/ythip,192.168.1.2,backup,backuser&quot;
+sync2=&quot;/home/db_backup,192.168.1.2,backup,backuser&quot;
+inotify_rsync_fun ()
+{
+ src=`echo $1 | awk -F&quot;,&quot; &apos;{print $1}&apos;`
+ ip=`echo $1 | awk -F &quot;,&quot; &apos;{print $2}&apos;`
+ dst=`echo $1 | awk -F &quot;,&quot; &apos;{print $3}&apos;`
+ user=`echo $1 | awk -F &quot;,&quot; &apos;{print $4}&apos;`
+ /usr/local/inotify/bin/inotifywait -mr --timefmt &apos;%d/%m/%y %H:%M&apos; --format &apos;%T %w%f&apos; -e modify,delete,create,attrib ${src} |while read DATE TIME DIR FILE
+ do
+  rsync -vzrtopg --delete --password-file=/etc/rsync.passwd ${src} backuser@${ip}::${dst} &amp;&amp; echo &quot;At ${TIME} on ${DATE}, file ${src} was backed up via rsync&quot; &gt;&gt; /var/log/rsyncd.log
+ done
+}
+count=3
+i=0
+while [ ${i} -lt ${count} ]
+do
+ i=`expr ${i} + 1`
+ tmp=&quot;sync&quot;$i
+ eval &quot;sync=\$$tmp&quot;
+ inotify_rsync_fun &quot;$sync&quot; &amp;
+done
+</code></pre><h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><pre><code>[root@centos ~]#chmod +x rsync_inotify.sh
+[root@centos ~]#sh -x rsync_inotify.sh
+</code></pre><p>此时在备份源服务器插入数据即可实时同步到备份端服务器.</p>
 
       
     </div>
@@ -391,9 +474,15 @@
       
         <div class="post-tags">
           
-            <a href="/tags/mac/" rel="tag"># mac</a>
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
           
-            <a href="/tags/php/" rel="tag"># php</a>
+            <a href="/tags/备份/" rel="tag"># 备份</a>
+          
+            <a href="/tags/server/" rel="tag"># server</a>
+          
+            <a href="/tags/rsync/" rel="tag"># rsync</a>
+          
+            <a href="/tags/inotify/" rel="tag"># inotify</a>
           
         </div>
       
@@ -406,8 +495,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/09/SSH登陆LINUNX设置方法/" rel="next" title="SSH登陆LINUNX设置方法">
-                <i class="fa fa-chevron-left"></i> SSH登陆LINUNX设置方法
+              <a href="/2017/07/28/CiscoASA显示所有OID/" rel="next" title="CiscoASA显示所有OID">
+                <i class="fa fa-chevron-left"></i> CiscoASA显示所有OID
               </a>
             
           </div>
@@ -415,10 +504,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/11/内网搭建kms服务器/" rel="prev" title="搭建kms服务器">
-                搭建kms服务器 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -574,7 +659,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装之前的啰嗦"><span class="nav-number">1.</span> <span class="nav-text">安装之前的啰嗦</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装FreeTds"><span class="nav-number">2.</span> <span class="nav-text">安装FreeTds</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编译-PHP-mssql-扩展"><span class="nav-number">3.</span> <span class="nav-text">编译 PHP mssql 扩展</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目的"><span class="nav-number">1.</span> <span class="nav-text">目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件版本"><span class="nav-number">2.</span> <span class="nav-text">软件版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#备份主机配置"><span class="nav-number">3.</span> <span class="nav-text">备份主机配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#确认rsync是否安装"><span class="nav-number">3.1.</span> <span class="nav-text">确认rsync是否安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建rsync配置文件"><span class="nav-number">3.2.</span> <span class="nav-text">创建rsync配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置用户名密码文件"><span class="nav-number">3.3.</span> <span class="nav-text">配置用户名密码文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动rsync服务"><span class="nav-number">3.4.</span> <span class="nav-text">启动rsync服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源服务器的配置"><span class="nav-number">4.</span> <span class="nav-text">源服务器的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置rsync密码"><span class="nav-number">4.1.</span> <span class="nav-text">配置rsync密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装inotity"><span class="nav-number">4.2.</span> <span class="nav-text">安装inotity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建rsycn-inotify-sh脚本"><span class="nav-number">4.3.</span> <span class="nav-text">创建rsycn_inotify.sh脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试"><span class="nav-number">4.4.</span> <span class="nav-text">测试</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -711,9 +796,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://ybdengzheng.github.io/2017/03/20/MAMP安装MSSQL扩展/';
-          this.page.identifier = '2017/03/20/MAMP安装MSSQL扩展/';
-          this.page.title = 'MAMP安装MSSQL扩展';
+          this.page.url = 'http://ybdengzheng.github.io/2017/09/06/Centos7配置rsync-inotify备份/';
+          this.page.identifier = '2017/09/06/Centos7配置rsync-inotify备份/';
+          this.page.title = 'Centos7配置rsync+inotify备份';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://ba-shi-jian-dang-peng-you.disqus.com/embed.js';
