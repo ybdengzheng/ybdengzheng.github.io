@@ -318,7 +318,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ybdengzheng"/>
       <meta itemprop="description" content="从0到1"/>
-      <meta itemprop="image" content="/images/avatar.png"/>
+      <meta itemprop="image" content="https://lh3.googleusercontent.com/4o8xxhWqf1XO7tlMON5tyT7jQAyqfcd180xISSiA8zMCpal26Ri0oQK1c7gfcbkofQl3j7xICFaWmCUQsX-uwhEDyPY_4hwRUrapzA_8Up32GG4cBosat1zlEFbAYSlglHrD1caPoeA-FJWGrsGLhtoBBYMKp0jWodqBxvrVuCxtXETOAJPoaRQrxbFOhlsOftsiwf-uVt_QcnKsfwMeZk0IkJrOpQgSEg_z6jqQOYmSEYY2km8_v6HSbGOtp94jEGrtxa04Mrb4SauYe-rlWfc181pkXxFnOoxzTcoW7vZ_JSf75Jbf7ZJv3N8sFBCIAjcw-i8p9IJ7NkoOEdsRp1RB7N_mCewOI7rPhYrwoiZK7rusBWFE3YQJv8QYBEckPNPY55KZW1ZvHm9pTB5n_IuVyYAKCAPXxrJ3tWgCHvnaERwk96jxpQ4yF4HpeZRO89m-7MEwD72LdOlJMunuyfiOePHWY35AfxQOzrYVwjBeLiRSsLdDSMEIrxgaesc31AWtMO1jzR2rusN3QHYIQWedGvgrvxGtNwCYuCOaNk4B-LG07AMZp5UHF4e-Dfb6erDVjoT5aYg_BSIxx7zs1HsDeg681vcvDIjg4_A4duPC4pvQEeYgM6N8BFwiOtsjdwddU7dpOI4rzMZni4F22EJe7b5zltOtrhDHGORmpqRi2HkC6TQiINk5_RS0g5iEYIe4w-D_9CTE_qQ6Q31qiA2l=s1000-no"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -362,6 +362,22 @@
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新於</span>
+                
+                <time title="修改時間：2019-05-21 16:26:50" itemprop="dateModified" datetime="2019-05-21T16:26:50+08:00">2019-05-21</time>
+              
+            
           </span>
 
           
@@ -396,7 +412,7 @@
         
           
             <p>SSH安全功能性和安全性都强于Telnet，合理配置SSH可以更方便管理Linux服务器。 SSH服务配置文件位于/etc/ssh/sshd_config，修改以后需要重新启动SSH服务。</p>
-<h2 id="按以下修改配置文件-etc-ssh-sshd-config"><a href="#按以下修改配置文件-etc-ssh-sshd-config" class="headerlink" title="按以下修改配置文件 ** /etc/ssh/sshd_config**"></a>按以下修改配置文件 ** /etc/ssh/sshd_config**</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">port XXXX</div><div class="line">PermitEmptyPasswords no</div><div class="line">HostbasedAuthentication no</div><div class="line">ClientAliveInterval 600</div><div class="line">ClientAliveCountMax 3</div><div class="line">PasswordAuthentication no</div><div class="line">RSAAuthentication yes  </div><div class="line">PubkeyAuthentication yes  </div><div class="line">AuthorizedKeysFile     .ssh/authorized_keys</div></pre></td></tr></table></figure>
+<h2 id="按以下修改配置文件-etc-ssh-sshd-config"><a href="#按以下修改配置文件-etc-ssh-sshd-config" class="headerlink" title="按以下修改配置文件 /etc/ssh/sshd\_config"></a>按以下修改配置文件 <code>/etc/ssh/sshd\_config</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">port XXXX</div><div class="line">PermitEmptyPasswords no</div><div class="line">HostbasedAuthentication no</div><div class="line">ClientAliveInterval 600</div><div class="line">ClientAliveCountMax 3</div><div class="line">PasswordAuthentication no</div><div class="line">RSAAuthentication yes  </div><div class="line">PubkeyAuthentication yes  </div><div class="line">AuthorizedKeysFile     .ssh/authorized_keys</div></pre></td></tr></table></figure>
 <h2 id="创建并上传证书"><a href="#创建并上传证书" class="headerlink" title="创建并上传证书"></a>创建并上传证书</h2><p>使用SSH公钥认证登陆，可以不用输入密码通过证书认证安全性更高。在客户端电脑生成证书：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dengMacBook:.ssh ybdengzheng$ ssh-keygen -t rsa -b 4096</div></pre></td></tr></table></figure></p>
 <p> 将公钥拷贝到服务器对应的.ssh下，命名为authorized_keys<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dengMacBook:.ssh ybdengzheng$ scp -P 29076 ~/.ssh/id_rsa.pub username@xxx.xxx.xxx.xxx:/username/.ssh/authorized_keys</div></pre></td></tr></table></figure></p>
 <p>如果已经存在证书，需要上传以后在服务器端追加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">dengMacBook:.ssh ybdengzheng$ scp -P 29076 ~/.ssh/id_rsa.pub root@23.83.238.185:/root/.ssh/id_rsa.pub</div><div class="line"></div><div class="line"># 以下到服务器执行</div><div class="line">cat /root/.ssh/id_rsa.pub &gt;&gt; /root/.ssh/authorized_keys</div></pre></td></tr></table></figure></p>
@@ -464,7 +480,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ybdengzheng"/>
       <meta itemprop="description" content="从0到1"/>
-      <meta itemprop="image" content="/images/avatar.png"/>
+      <meta itemprop="image" content="https://lh3.googleusercontent.com/4o8xxhWqf1XO7tlMON5tyT7jQAyqfcd180xISSiA8zMCpal26Ri0oQK1c7gfcbkofQl3j7xICFaWmCUQsX-uwhEDyPY_4hwRUrapzA_8Up32GG4cBosat1zlEFbAYSlglHrD1caPoeA-FJWGrsGLhtoBBYMKp0jWodqBxvrVuCxtXETOAJPoaRQrxbFOhlsOftsiwf-uVt_QcnKsfwMeZk0IkJrOpQgSEg_z6jqQOYmSEYY2km8_v6HSbGOtp94jEGrtxa04Mrb4SauYe-rlWfc181pkXxFnOoxzTcoW7vZ_JSf75Jbf7ZJv3N8sFBCIAjcw-i8p9IJ7NkoOEdsRp1RB7N_mCewOI7rPhYrwoiZK7rusBWFE3YQJv8QYBEckPNPY55KZW1ZvHm9pTB5n_IuVyYAKCAPXxrJ3tWgCHvnaERwk96jxpQ4yF4HpeZRO89m-7MEwD72LdOlJMunuyfiOePHWY35AfxQOzrYVwjBeLiRSsLdDSMEIrxgaesc31AWtMO1jzR2rusN3QHYIQWedGvgrvxGtNwCYuCOaNk4B-LG07AMZp5UHF4e-Dfb6erDVjoT5aYg_BSIxx7zs1HsDeg681vcvDIjg4_A4duPC4pvQEeYgM6N8BFwiOtsjdwddU7dpOI4rzMZni4F22EJe7b5zltOtrhDHGORmpqRi2HkC6TQiINk5_RS0g5iEYIe4w-D_9CTE_qQ6Q31qiA2l=s1000-no"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -661,7 +677,7 @@ ddb.longContentID = &quot;85b198b007c1d62f3b6b08222b3b45dc&quot;
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ybdengzheng"/>
       <meta itemprop="description" content="从0到1"/>
-      <meta itemprop="image" content="/images/avatar.png"/>
+      <meta itemprop="image" content="https://lh3.googleusercontent.com/4o8xxhWqf1XO7tlMON5tyT7jQAyqfcd180xISSiA8zMCpal26Ri0oQK1c7gfcbkofQl3j7xICFaWmCUQsX-uwhEDyPY_4hwRUrapzA_8Up32GG4cBosat1zlEFbAYSlglHrD1caPoeA-FJWGrsGLhtoBBYMKp0jWodqBxvrVuCxtXETOAJPoaRQrxbFOhlsOftsiwf-uVt_QcnKsfwMeZk0IkJrOpQgSEg_z6jqQOYmSEYY2km8_v6HSbGOtp94jEGrtxa04Mrb4SauYe-rlWfc181pkXxFnOoxzTcoW7vZ_JSf75Jbf7ZJv3N8sFBCIAjcw-i8p9IJ7NkoOEdsRp1RB7N_mCewOI7rPhYrwoiZK7rusBWFE3YQJv8QYBEckPNPY55KZW1ZvHm9pTB5n_IuVyYAKCAPXxrJ3tWgCHvnaERwk96jxpQ4yF4HpeZRO89m-7MEwD72LdOlJMunuyfiOePHWY35AfxQOzrYVwjBeLiRSsLdDSMEIrxgaesc31AWtMO1jzR2rusN3QHYIQWedGvgrvxGtNwCYuCOaNk4B-LG07AMZp5UHF4e-Dfb6erDVjoT5aYg_BSIxx7zs1HsDeg681vcvDIjg4_A4duPC4pvQEeYgM6N8BFwiOtsjdwddU7dpOI4rzMZni4F22EJe7b5zltOtrhDHGORmpqRi2HkC6TQiINk5_RS0g5iEYIe4w-D_9CTE_qQ6Q31qiA2l=s1000-no"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -908,7 +924,7 @@ done
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ybdengzheng"/>
       <meta itemprop="description" content="从0到1"/>
-      <meta itemprop="image" content="/images/avatar.png"/>
+      <meta itemprop="image" content="https://lh3.googleusercontent.com/4o8xxhWqf1XO7tlMON5tyT7jQAyqfcd180xISSiA8zMCpal26Ri0oQK1c7gfcbkofQl3j7xICFaWmCUQsX-uwhEDyPY_4hwRUrapzA_8Up32GG4cBosat1zlEFbAYSlglHrD1caPoeA-FJWGrsGLhtoBBYMKp0jWodqBxvrVuCxtXETOAJPoaRQrxbFOhlsOftsiwf-uVt_QcnKsfwMeZk0IkJrOpQgSEg_z6jqQOYmSEYY2km8_v6HSbGOtp94jEGrtxa04Mrb4SauYe-rlWfc181pkXxFnOoxzTcoW7vZ_JSf75Jbf7ZJv3N8sFBCIAjcw-i8p9IJ7NkoOEdsRp1RB7N_mCewOI7rPhYrwoiZK7rusBWFE3YQJv8QYBEckPNPY55KZW1ZvHm9pTB5n_IuVyYAKCAPXxrJ3tWgCHvnaERwk96jxpQ4yF4HpeZRO89m-7MEwD72LdOlJMunuyfiOePHWY35AfxQOzrYVwjBeLiRSsLdDSMEIrxgaesc31AWtMO1jzR2rusN3QHYIQWedGvgrvxGtNwCYuCOaNk4B-LG07AMZp5UHF4e-Dfb6erDVjoT5aYg_BSIxx7zs1HsDeg681vcvDIjg4_A4duPC4pvQEeYgM6N8BFwiOtsjdwddU7dpOI4rzMZni4F22EJe7b5zltOtrhDHGORmpqRi2HkC6TQiINk5_RS0g5iEYIe4w-D_9CTE_qQ6Q31qiA2l=s1000-no"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1063,7 +1079,7 @@ done
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ybdengzheng"/>
       <meta itemprop="description" content="从0到1"/>
-      <meta itemprop="image" content="/images/avatar.png"/>
+      <meta itemprop="image" content="https://lh3.googleusercontent.com/4o8xxhWqf1XO7tlMON5tyT7jQAyqfcd180xISSiA8zMCpal26Ri0oQK1c7gfcbkofQl3j7xICFaWmCUQsX-uwhEDyPY_4hwRUrapzA_8Up32GG4cBosat1zlEFbAYSlglHrD1caPoeA-FJWGrsGLhtoBBYMKp0jWodqBxvrVuCxtXETOAJPoaRQrxbFOhlsOftsiwf-uVt_QcnKsfwMeZk0IkJrOpQgSEg_z6jqQOYmSEYY2km8_v6HSbGOtp94jEGrtxa04Mrb4SauYe-rlWfc181pkXxFnOoxzTcoW7vZ_JSf75Jbf7ZJv3N8sFBCIAjcw-i8p9IJ7NkoOEdsRp1RB7N_mCewOI7rPhYrwoiZK7rusBWFE3YQJv8QYBEckPNPY55KZW1ZvHm9pTB5n_IuVyYAKCAPXxrJ3tWgCHvnaERwk96jxpQ4yF4HpeZRO89m-7MEwD72LdOlJMunuyfiOePHWY35AfxQOzrYVwjBeLiRSsLdDSMEIrxgaesc31AWtMO1jzR2rusN3QHYIQWedGvgrvxGtNwCYuCOaNk4B-LG07AMZp5UHF4e-Dfb6erDVjoT5aYg_BSIxx7zs1HsDeg681vcvDIjg4_A4duPC4pvQEeYgM6N8BFwiOtsjdwddU7dpOI4rzMZni4F22EJe7b5zltOtrhDHGORmpqRi2HkC6TQiINk5_RS0g5iEYIe4w-D_9CTE_qQ6Q31qiA2l=s1000-no"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1251,7 +1267,7 @@ done
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ybdengzheng"/>
       <meta itemprop="description" content="从0到1"/>
-      <meta itemprop="image" content="/images/avatar.png"/>
+      <meta itemprop="image" content="https://lh3.googleusercontent.com/4o8xxhWqf1XO7tlMON5tyT7jQAyqfcd180xISSiA8zMCpal26Ri0oQK1c7gfcbkofQl3j7xICFaWmCUQsX-uwhEDyPY_4hwRUrapzA_8Up32GG4cBosat1zlEFbAYSlglHrD1caPoeA-FJWGrsGLhtoBBYMKp0jWodqBxvrVuCxtXETOAJPoaRQrxbFOhlsOftsiwf-uVt_QcnKsfwMeZk0IkJrOpQgSEg_z6jqQOYmSEYY2km8_v6HSbGOtp94jEGrtxa04Mrb4SauYe-rlWfc181pkXxFnOoxzTcoW7vZ_JSf75Jbf7ZJv3N8sFBCIAjcw-i8p9IJ7NkoOEdsRp1RB7N_mCewOI7rPhYrwoiZK7rusBWFE3YQJv8QYBEckPNPY55KZW1ZvHm9pTB5n_IuVyYAKCAPXxrJ3tWgCHvnaERwk96jxpQ4yF4HpeZRO89m-7MEwD72LdOlJMunuyfiOePHWY35AfxQOzrYVwjBeLiRSsLdDSMEIrxgaesc31AWtMO1jzR2rusN3QHYIQWedGvgrvxGtNwCYuCOaNk4B-LG07AMZp5UHF4e-Dfb6erDVjoT5aYg_BSIxx7zs1HsDeg681vcvDIjg4_A4duPC4pvQEeYgM6N8BFwiOtsjdwddU7dpOI4rzMZni4F22EJe7b5zltOtrhDHGORmpqRi2HkC6TQiINk5_RS0g5iEYIe4w-D_9CTE_qQ6Q31qiA2l=s1000-no"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1425,7 +1441,7 @@ done
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/images/avatar.png"
+                src="https://lh3.googleusercontent.com/4o8xxhWqf1XO7tlMON5tyT7jQAyqfcd180xISSiA8zMCpal26Ri0oQK1c7gfcbkofQl3j7xICFaWmCUQsX-uwhEDyPY_4hwRUrapzA_8Up32GG4cBosat1zlEFbAYSlglHrD1caPoeA-FJWGrsGLhtoBBYMKp0jWodqBxvrVuCxtXETOAJPoaRQrxbFOhlsOftsiwf-uVt_QcnKsfwMeZk0IkJrOpQgSEg_z6jqQOYmSEYY2km8_v6HSbGOtp94jEGrtxa04Mrb4SauYe-rlWfc181pkXxFnOoxzTcoW7vZ_JSf75Jbf7ZJv3N8sFBCIAjcw-i8p9IJ7NkoOEdsRp1RB7N_mCewOI7rPhYrwoiZK7rusBWFE3YQJv8QYBEckPNPY55KZW1ZvHm9pTB5n_IuVyYAKCAPXxrJ3tWgCHvnaERwk96jxpQ4yF4HpeZRO89m-7MEwD72LdOlJMunuyfiOePHWY35AfxQOzrYVwjBeLiRSsLdDSMEIrxgaesc31AWtMO1jzR2rusN3QHYIQWedGvgrvxGtNwCYuCOaNk4B-LG07AMZp5UHF4e-Dfb6erDVjoT5aYg_BSIxx7zs1HsDeg681vcvDIjg4_A4duPC4pvQEeYgM6N8BFwiOtsjdwddU7dpOI4rzMZni4F22EJe7b5zltOtrhDHGORmpqRi2HkC6TQiINk5_RS0g5iEYIe4w-D_9CTE_qQ6Q31qiA2l=s1000-no"
                 alt="ybdengzheng"/>
             
               <p class="site-author-name" itemprop="name">ybdengzheng</p>
